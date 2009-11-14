@@ -1,43 +1,36 @@
 #!/bin/sh
-.PHONY: clean jar backup doc doc-pub doc-priv
+.PHONY: clean jar doc doc-pub doc-priv
 COMPILER = javac
-CLASS_FOLDER = class/
-FLAGS = -g -Xlint -d $(CLASS_FOLDER)
-SRC_DIRECTORY = src/CalculatorD/
+CLASS_DIR = class/
+FLAGS = -g -Xlint -d $(CLASS_DIR)
+SRC = src
 PACKAGE = CalculatorD
-MANIFEST = Manifest.txt
 DOC_DIR = doc/
-JAR_FILE = Calculator.jar
+JAR_FILE = CalculatorD.jar
 MAIN_CLASS = $(PACKAGE).Main
 default: Main
 
-#Main: class/
-Main: $(CLASS_FOLDER)
-	$(COMPILER) $(FLAGS) $(SRC_DIRECTORY)*.java
+Main: $(CLASS_DIR)
+	$(COMPILER) $(FLAGS) $(SRC)/$(PACKAGE)/*.java
 
-#class/:
-$(CLASS_FOLDER):
+$(CLASS_DIR):
 	mkdir class
 
 clean:
-	rm -rf $(CLASS_FOLDER)
+	rm -rf $(CLASS_DIR)
 	rm -rf $(DOC_DIR)
 	rm -rf CalculatorOptions.cfg
 	rm -rf $(JAR_FILE)
 jar: Main
-	jar -cfe $(JAR_FILE) $(MAIN_CLASS) -C $(CLASS_FOLDER) .
+	jar -cfe $(JAR_FILE) $(MAIN_CLASS) -C $(CLASS_DIR) .
 
-doc: doc-pub
 
 doc-pub:
 	mkdir $(DOC_DIR) || true
-	javadoc -d $(DOC_DIR) $(PACKAGE)
+	javadoc -d $(DOC_DIR) -sourcepath $(SRC) $(PACKAGE)
 
+doc: doc-pub
 
 doc-priv:
 	mkdir $(DOC_DIR) || true
-	javadoc -private -d $(DOC_DIR) $(PACKAGE)
-
-
-backup:  clean
-	rsync -vur --delete . /home/dustinl/Dropbox/Calculator
+	javadoc -private -d $(DOC_DIR) -sourcepath $(SRC) $(PACKAGE)

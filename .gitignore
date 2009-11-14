@@ -1,0 +1,4 @@
+# ignore class folder
+class/*
+# ignore doc folder
+doc/*
