@@ -7,7 +7,7 @@ CalculatorD provided as-is for entertainment/educational use only.  Personally, 
 
 Using the Program
 =================
-If you are not a developer, I encourage you to download 'CalculatorD.jar' and use that.  
+If you are not a developer, I encourage you to download 'CalculatorD.jar' and use that.
 
 On most Windows systems, you can double-click on this jar file to run the program.  Piece of cake.
 
@@ -31,7 +31,7 @@ Files Found Here
 -src/...
     Source code written in Java
 -Calculator.jar
-    JAR for this program.
+    JAR for this program.  You can find this in the Downloads section.
 
 License
 =======

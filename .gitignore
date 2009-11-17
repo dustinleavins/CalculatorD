@@ -2,3 +2,5 @@
 class/*
 # ignore doc folder
 doc/*
+# ignore CalculatorD.jar
+CalculatorD.jar
