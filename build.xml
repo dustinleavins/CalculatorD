@@ -1,0 +1,39 @@
+<project name="CalculatorD" default="main" basedir=".">
+
+	<target name="main" depends="build">
+	</target>
+
+	<target name="build" description="Builds the main program classes.">
+	        <mkdir dir="class"/>
+		<javac srcdir="src" destdir="class" debug="yes">
+			<compilerarg value="-Xlint" />
+		</javac>
+	</target>
+
+	<target name="clean" description="Deletes class and doc directories.">
+		<delete dir="class"/>
+		<delete file="CalculatorOptions.cfg" />
+		<delete dir="doc" />
+		<delete file="CalculatorD.jar" />
+	</target>
+
+	<target name="jar" description="Create jar file.">
+		<jar destfile="CalculatorD.jar" basedir="class">
+			<manifest>
+				<attribute name="Main-Class" value="CalculatorD.Main" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="doc" depends="doc-pub" />
+
+	<target name="doc-pub" description="Javadoc generation (public)">
+		<mkdir dir="doc" />
+		<javadoc sourcepath="src" destdir="doc"/>
+	</target>
+
+	<target name="doc-priv" description="Javadoc generation (private)">
+		<mkdir dir="doc" />
+		<javadoc sourcepath="src" destdir="doc" access="private"/>
+	</target>
+</project>
