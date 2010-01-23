@@ -10,6 +10,13 @@
 		</javac>
 	</target>
 
+	<target name="build-test" description="Builds main program classes and test files." depends="build">
+		<javac srcdir="test" destdir="class" debug="yes" classpath="class">
+			<compilerarg value="-Xlint" />
+		</javac>
+
+	</target>
+
 	<target name="clean" description="Deletes class and doc directories.">
 		<delete dir="class"/>
 		<delete file="CalculatorOptions.cfg" />
