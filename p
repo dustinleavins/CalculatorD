@@ -1,7 +1,13 @@
 Calculator_Project=~/CalculatorD CD=. {
 makefile
+build.xml
 
-Java_Files=src/CalculatorD filter="*.java" {
+doc {
+  README
+  LICENSE
+}
+
+src=src/CalculatorD filter="*.java" {
   Calculation.java
   CalculationItem.java
   CalculationNumber.java
@@ -15,5 +21,9 @@ Java_Files=src/CalculatorD filter="*.java" {
   OptionPrompt.java
   OptionsFileManager.java
   Test_Calculation.java
+}
+
+test=test/CalculatorD/Test filter="*.java" {
+  TestFraction.java
 }
 }
