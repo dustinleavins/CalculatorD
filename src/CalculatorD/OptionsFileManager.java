@@ -17,7 +17,7 @@ import java.io.BufferedReader;
  */
 public class OptionsFileManager {
 
-    private File f;
+    private File optionsFile;
 
     /**
      * Constructor.
@@ -25,7 +25,7 @@ public class OptionsFileManager {
      * read from and write to.
      */
     public OptionsFileManager(String pathname) {
-        this.f = new File(pathname);
+        this.optionsFile = new File(pathname);
 
     }
 
@@ -44,44 +44,38 @@ public class OptionsFileManager {
         int displayFontSize;
         int buttonFontSize;
         int horizontalAlignment;
-        boolean udb;
-        String t;
+        boolean decimalButtonIsDelete;
+        String tempString;
         GUIOptions returnOptions;
 
         try {
-            fr = new FileReader(this.f);
+            fr = new FileReader(this.optionsFile);
             bReader = new BufferedReader(fr);
 
-            // Reading displayFontSize
-            t = bReader.readLine();
-            t = t.substring(4,t.length());
-            displayFontSize = Integer.valueOf(t);
+            // Reading displayFontSize from file
+            tempString = bReader.readLine();
+            tempString = tempString.substring(4,tempString.length());
+            displayFontSize = Integer.valueOf(tempString);
 
-            // Reading buttonFontSize
-            t = bReader.readLine();
-            t = t.substring(4,t.length());
-            buttonFontSize = Integer.valueOf(t);
+            // Reading buttonFontSize from file
+            tempString = bReader.readLine();
+            tempString = tempString.substring(4,tempString.length());
+            buttonFontSize = Integer.valueOf(tempString);
 
-            // Reading horizontalAlignment
-            t = bReader.readLine();
-            t = t.substring(3,t.length());
-            horizontalAlignment = Integer.valueOf(t);
+            // Reading horizontalAlignment from file
+            tempString = bReader.readLine();
+            tempString = tempString.substring(3,tempString.length());
+            horizontalAlignment = Integer.valueOf(tempString);
 
-            // Reading udb
-            t = bReader.readLine();
-            t = t.substring(4, t.length());
-
-            if (t.equals("No")) {
-                udb = false;
-            }
-            else {
-                udb = true;
-            }
+            // Reading decimalButtonIsDelete from file
+            tempString = bReader.readLine();
+            tempString = tempString.substring(4, tempString.length());
+            decimalButtonIsDelete = tempString.equals("Yes");
 
             returnOptions = new GUIOptions(displayFontSize,
                 buttonFontSize,
                 horizontalAlignment,
-                udb);
+                decimalButtonIsDelete);
 
         }
         catch (IOException ioe) {
@@ -103,11 +97,11 @@ public class OptionsFileManager {
         int displayFontSize = o.displayFontSize();
         int buttonFontSize = o.buttonFontSize();
         int horizontalAlignment = o.horizontalAlignment();
-        boolean udb = o.useDecimalButtonForDelete();
+        boolean decimalButtonIsDelete = o.useDecimalButtonForDelete();
         StringBuffer sb = new StringBuffer();
 
         try {
-            writer = new FileWriter(f);
+            writer = new FileWriter(optionsFile);
 
             sb.append("dfs:");
             sb.append(displayFontSize + "\n");
@@ -116,7 +110,7 @@ public class OptionsFileManager {
             sb.append("ha:");
             sb.append(horizontalAlignment + "\n");
             sb.append("udb:");
-            sb.append(udb ? "Yes\n" : "No\n");
+            sb.append(decimalButtonIsDelete ? "Yes\n" : "No\n");
 
             writer.write(sb.toString());
             writer.close();
