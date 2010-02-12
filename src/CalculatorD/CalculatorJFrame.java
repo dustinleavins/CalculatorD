@@ -105,8 +105,8 @@ public class CalculatorJFrame extends JFrame {
 
         addButton = new JButton("+");
         subtractButton = new JButton("-");
-        multiplyButton = new JButton("*");
-        divideButton = new JButton("/");
+        multiplyButton = new JButton("x *");
+        divideButton = new JButton("÷ /");
         decimalButton = new JButton(".");
         deleteButton = new JButton("Delete");
         equalsButton = new JButton("=");
