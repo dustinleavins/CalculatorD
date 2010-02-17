@@ -60,7 +60,7 @@ public class CalculatorJFrame extends JFrame {
      * <code>OptionPrompt.showPrompt</code> that allows the option prompt
      * to make changes in the display of <code>this</code>.
      */
-    private static CalculatorJFrame thisFrame;
+    private CalculatorJFrame thisFrame;
 
     /**
      * Order of the number orders as they appear from left to right
