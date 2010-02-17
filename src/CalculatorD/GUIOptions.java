@@ -109,13 +109,13 @@ public class GUIOptions implements Cloneable{
 
         // Checking & setting horizontalAlignment
         if (horizontalAlignment == LEFT_HORIZONTAL_ALIGNMENT) {
-            horizontalAlignment = LEFT_HORIZONTAL_ALIGNMENT;
+            this.horizontalAlignment = LEFT_HORIZONTAL_ALIGNMENT;
         }
         else if (horizontalAlignment == RIGHT_HORIZONTAL_ALIGNMENT) {
-            horizontalAlignment = RIGHT_HORIZONTAL_ALIGNMENT;
+            this.horizontalAlignment = RIGHT_HORIZONTAL_ALIGNMENT;
         }
         else {
-            horizontalAlignment = CENTER_HORIZONTAL_ALIGNMENT;
+            this.horizontalAlignment = CENTER_HORIZONTAL_ALIGNMENT;
         }
 
         // Setting useDecimalButtonForDelete
