@@ -301,6 +301,15 @@ public class Fraction {
     }
 
     /**
+     * Returns a hash code value for <code>this</code> based on hash codes
+     * for the numerator and denominator.
+     * @return hash code
+     */
+    public int hashCode() {
+        return numerator.hashCode() & denominator.hashCode();
+    }
+
+    /**
      * The value 0.
      */
     public static final Fraction ZERO = new Fraction(0,1);
