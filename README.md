@@ -7,34 +7,50 @@ CalculatorD provided as-is for entertainment/educational use only.  Personally, 
 
 Using the Program
 =================
-If you are not a developer, I encourage you to download 'CalculatorD.jar' and use that.
+If you are not a developer, I encourage you to download `CalculatorD.jar` and use that.
 
 On most Windows systems, you can double-click on this jar file to run the program.  Piece of cake.
 
-On other systems, open your terminal, cd to the directory that you placed 'CalculatorD.jar' in and run the following command:
-java -jar Calculator.jar
+On other systems, open your terminal, cd to the directory that you placed `CalculatorD.jar` in and run the following command:
 
-On any system where CalculatorD works, the program generates a file by the name of 'CalculatorOptions.cfg' in the same directory as 'CalculatorD.jar'.  This file stores program options that you can set from within the program.
+`java -jar Calculator.jar`
 
-If you're a developer, you can use the provided makefile (or the provided Ant build.xml) to compile, generate documentation, and all sorts of other fun stuff.
+On any system where CalculatorD works, the program generates a file by the name of `CalculatorOptions.cfg` in the same directory as `CalculatorD.jar`.  This file stores program options that you can set from within the program.
+
+If you're a developer, you can use the provided makefile (or the provided Ant `build.xml`) to compile, generate documentation, and all sorts of other fun stuff.
 
 Files Found Here
 ================
--README
+- *README*
+
     This file
--LICENSE
+
+- *LICENSE*
+
     Legal mumbo-jumbo
--makefile
+
+- *makefile*
+
     For use by developers/programmers/code monkeys/sysadmins/other weirdos
--build.xml
+
+- *build.xml*
+
     Have Apache Ant?  Want to use it instead of make?  This file is for you.
--p
+
+- *p*
+
     Project file for project.vim (a project manager for Vim)
--src/...
+
+- *src/...*
+
     Source code written in Java
--test/...
+
+- *test/...*
+
     Source code written in Java for test classes.  Uses JUnit4.
--Calculator.jar
+
+- *Calculator.jar*
+
     JAR for this program.  You can find this in the Downloads section.
 
 License
