@@ -77,7 +77,35 @@ public class TestFraction {
 
     @Test
     public void testEquals() {
-        // TODO - Stub
+        Fraction x = new Fraction(3,10);
+        Fraction y = new Fraction("0.3");
+        boolean firstCondition, secondCondition;
+
+        // Symmetry test - true
+        firstCondition = x.equals(y);
+        secondCondition = y.equals(x);
+        assertTrue(firstCondition == secondCondition);
+
+        // Transitive test - true
+        Fraction z = new Fraction(3,10);
+        boolean thirdCondition;
+
+        firstCondition = x.equals(y);
+        secondCondition = y.equals(z);
+        thirdCondition = x.equals(z);
+        assertTrue((firstCondition && secondCondition) == thirdCondition);
+
+        // Symmetry test - false
+        y = new Fraction(10,3);
+        firstCondition = x.equals(y);
+        secondCondition = y.equals(x);
+        assertTrue(firstCondition == secondCondition);
+
+        // null test
+        assertFalse(x.equals(null));
+
+        // Non-Fraction class test
+        assertFalse(x.equals(BigInteger.valueOf(4)));
     }
 
     @Test

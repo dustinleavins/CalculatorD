@@ -282,22 +282,19 @@ public class Fraction {
         boolean numEquals;
         boolean denomEquals;
 
-        if (o instanceof Fraction) {
-            f = (Fraction) o;
+        if (this == o) {
+            return true;
         }
-        else {
+        else if (!(o instanceof Fraction)) {
             return false;
         }
+
+        f = (Fraction) o;
 
         numEquals = this.numerator.equals(f.getNumerator());
         denomEquals = this.denominator.equals(f.getDenominator());
 
-        if (numEquals && denomEquals) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return numEquals && denomEquals;
     }
 
     /**
