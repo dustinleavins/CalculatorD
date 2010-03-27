@@ -20,10 +20,10 @@ src=src/CalculatorD filter="*.java" {
   Operation.java
   OptionPrompt.java
   OptionsFileManager.java
-  Test_Calculation.java
 }
 
 test=test/CalculatorD/Test filter="*.java" {
+  TestCalculation.java
   TestFraction.java
 }
 }
