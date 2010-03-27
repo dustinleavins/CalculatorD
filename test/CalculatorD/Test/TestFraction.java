@@ -24,7 +24,7 @@ public class TestFraction {
         assertEquals(f.getDenominator(), correctDenominator);
 
         // Fraction, Negative, Greater than -1
-        f = new Fraction("-0.1); // -1/10
+        f = new Fraction("-0.1"); // -1/10
         correctNumerator = BigInteger.valueOf(-1);
         assertEquals(f.getNumerator(), correctNumerator);
         assertEquals(f.getDenominator(), correctDenominator);
@@ -78,6 +78,14 @@ public class TestFraction {
     @Test
     public void testEquals() {
         // TODO - Stub
+    }
+
+    @Test
+    public void testHashCode() {
+        Fraction f1 = new Fraction(3,1);
+        Fraction f2 = new Fraction("3");
+
+        assertEquals(f1.hashCode(), f2.hashCode());
     }
 
     public static void main (String [] args)

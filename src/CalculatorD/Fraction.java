@@ -306,7 +306,11 @@ public class Fraction {
      * @return hash code
      */
     public int hashCode() {
-        return numerator.hashCode() & denominator.hashCode();
+        int returnCode = 5;
+        returnCode = (31 * returnCode) + numerator.hashCode();
+        returnCode = (31 * returnCode) + denominator.hashCode();
+
+        return returnCode;
     }
 
     /**
