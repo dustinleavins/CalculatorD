@@ -140,10 +140,22 @@ public class Fraction {
      * @param numerator
      * @param denominator
      */
-    private Fraction(BigInteger numerator, BigInteger denominator) {
-        // No error-checking is required
+    private Fraction(BigInteger numerator, BigInteger denominator) 
+            throws ArithmeticException {
         this.numerator = numerator;
         this.denominator = denominator;
+
+        if (denominator.equals(BigInteger.ZERO)) {
+            throw new ArithmeticException(DIV_BY_ZERO_MSG);
+        }
+        else if (denominator.compareTo(BigInteger.ZERO) < 1) {
+            this.numerator = numerator.negate();
+            this.denominator = denominator.negate();
+        }
+        else {
+            this.numerator = numerator;
+            this.denominator = denominator;
+        }
     }
  
 
@@ -170,9 +182,10 @@ public class Fraction {
      */
     public double doubleValue() {
         double n = numerator.doubleValue();
-        double d = numerator.doubleValue();
+        double d = denominator.doubleValue();
+        double result = n / d;
 
-        return n / d;
+        return result;
     }
     
     /**
