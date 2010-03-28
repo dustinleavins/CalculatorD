@@ -405,8 +405,7 @@ public class CalculatorJFrame extends JFrame {
      */
     public void setOptions(GUIOptions guiO){
         this.currentGUIOptions = guiO;
-        numberTextField.setFont(new Font(Font.MONOSPACED, 
-            Font.PLAIN, guiO.displayFontSize()));
+        numberTextField.setFont(generateFont(guiO.displayFontSize()));
 
         numberTextField.setHorizontalAlignment(guiO.horizontalAlignment());
 
@@ -414,38 +413,18 @@ public class CalculatorJFrame extends JFrame {
         // by the KeyListener for numberTextField.
 
         for (int i = 0; i < NUMBER_ORDER.length; ++i) {
-            numberButtons[i].setFont(new Font(Font.MONOSPACED, 
-                Font.PLAIN, 
-                guiO.buttonFontSize()));
+            numberButtons[i].setFont(generateFont(guiO.buttonFontSize()));
         }
 
-        addButton.setFont(new Font(Font.MONOSPACED, 
-            Font.PLAIN, 
-            guiO.buttonFontSize()));
-        subtractButton.setFont(new Font(Font.MONOSPACED, 
-            Font.PLAIN, 
-            guiO.buttonFontSize()));
-        multiplyButton.setFont(new Font(Font.MONOSPACED,
-            Font.PLAIN, 
-            guiO.buttonFontSize()));
-        divideButton.setFont(new Font(Font.MONOSPACED,
-            Font.PLAIN, 
-            guiO.buttonFontSize()));
-        decimalButton.setFont(new Font(Font.MONOSPACED,
-            Font.PLAIN, 
-            guiO.buttonFontSize()));
-        deleteButton.setFont(new Font(Font.MONOSPACED,
-            Font.PLAIN, 
-            guiO.buttonFontSize()));
-        equalsButton.setFont(new Font(Font.MONOSPACED,
-            Font.PLAIN, 
-            guiO.buttonFontSize()));
-        negateButton.setFont(new Font(Font.MONOSPACED,
-            Font.PLAIN, 
-            guiO.buttonFontSize()));
-        clearButton.setFont(new Font(Font.MONOSPACED,
-            Font.PLAIN, 
-            guiO.buttonFontSize()));
+        addButton.setFont(generateFont(guiO.buttonFontSize()));
+        subtractButton.setFont(generateFont(guiO.buttonFontSize()));
+        multiplyButton.setFont(generateFont(guiO.buttonFontSize()));
+        divideButton.setFont(generateFont(guiO.buttonFontSize()));
+        decimalButton.setFont(generateFont(guiO.buttonFontSize()));
+        deleteButton.setFont(generateFont(guiO.buttonFontSize()));
+        equalsButton.setFont(generateFont(guiO.buttonFontSize()));
+        negateButton.setFont(generateFont(guiO.buttonFontSize()));
+        clearButton.setFont(generateFont(guiO.buttonFontSize()));
 
         try {
             optionsFileManager.saveOptions(currentGUIOptions);
@@ -458,6 +437,16 @@ public class CalculatorJFrame extends JFrame {
                 JOptionPane.ERROR_MESSAGE);
         }
     }
+
+    /**
+     * Generates a program Font according to the given size.
+     * The program uses the Monospace font with no style for
+     * buttons and the numberTextField.
+     * @return font of the specified size
+     */
+     private Font generateFont(int size) {
+        return new Font(Font.MONOSPACED, Font.PLAIN, size);
+     }
 
     /**
      * Clears <code>currentCalculation</code> and 
