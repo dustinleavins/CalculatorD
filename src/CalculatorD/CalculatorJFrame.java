@@ -34,6 +34,7 @@ public class CalculatorJFrame extends JFrame {
     private JButton deleteButton;
     private JButton equalsButton;
     private JButton clearButton;
+    private JButton negateButton;
     private JMenuItem optionsMenuItem;
     private final CalculatorTextField numberTextField = 
         new CalculatorTextField();
@@ -91,7 +92,7 @@ public class CalculatorJFrame extends JFrame {
 
         this.setLayout(new BorderLayout());
         numberButtonsPanel.setLayout(new GridLayout(4,4));
-        operationsPanel.setLayout(new GridLayout(5,1));
+        operationsPanel.setLayout(new GridLayout(6,1));
         addSubPanel.setLayout(new GridLayout(1,2));
         mulDividePanel.setLayout(new GridLayout(1,2));
         decimalDeletePanel.setLayout(new GridLayout(1,2));
@@ -110,6 +111,7 @@ public class CalculatorJFrame extends JFrame {
         decimalButton = new JButton(".");
         deleteButton = new JButton("Delete");
         equalsButton = new JButton("=");
+        negateButton = new JButton("+/-");
         clearButton = new JButton("Clear");
 
         addSubPanel.add(addButton);
@@ -123,6 +125,7 @@ public class CalculatorJFrame extends JFrame {
         operationsPanel.add(decimalDeletePanel);
         operationsPanel.add(addSubPanel);
         operationsPanel.add(mulDividePanel);
+        operationsPanel.add(negateButton);
         operationsPanel.add(equalsButton);
 
         this.add(numberTextField, BorderLayout.NORTH);
@@ -350,6 +353,25 @@ public class CalculatorJFrame extends JFrame {
             }
         });
 
+        negateButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae) {
+                String t = numberTextField.getText();
+
+                if (numberTextField.getDisplayMode()) {
+                    numberTextField.setDisplayMode(false);
+                }
+                
+                if (t.startsWith("-")) {
+                    numberTextField.setText(t.substring(1));
+                }
+                else if (!t.startsWith("0")) {
+                    numberTextField.setText("-" + t);
+                }
+
+                numberTextField.requestFocus();
+            }
+        });
+
 
         clearButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae) {
@@ -415,6 +437,9 @@ public class CalculatorJFrame extends JFrame {
             Font.PLAIN, 
             guiO.buttonFontSize()));
         equalsButton.setFont(new Font(Font.MONOSPACED,
+            Font.PLAIN, 
+            guiO.buttonFontSize()));
+        negateButton.setFont(new Font(Font.MONOSPACED,
             Font.PLAIN, 
             guiO.buttonFontSize()));
         clearButton.setFont(new Font(Font.MONOSPACED,
