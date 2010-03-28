@@ -7,7 +7,7 @@ CalculatorD provided as-is for entertainment/educational use only.  Personally, 
 
 Using the Program
 =================
-If you are not a developer, I encourage you to download `CalculatorD.jar` and use that.
+If you are not a developer, I encourage you to download `CalculatorD.jar` and use that.  `CalculatorD.jar` can be found on my [website](http://www.dustin-leavins.info/programming.php) ([direct download link](http://www.dustin-leavins.info/CalculatorD.jar)).
 
 On most Windows systems, you can double-click on this jar file to run the program.  Piece of cake.
 
@@ -21,7 +21,7 @@ If you're a developer, you can use the provided makefile (or the provided Ant `b
 
 Files Found Here
 ================
-- *README*
+- *README.md*
 
     This file
 
@@ -48,10 +48,6 @@ Files Found Here
 - *test/...*
 
     Source code written in Java for test classes.  Uses JUnit4.
-
-- *Calculator.jar*
-
-    JAR for this program.  You can find this in the Downloads section.
 
 License
 =======
