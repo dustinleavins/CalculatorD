@@ -1,31 +1,38 @@
 <project name="CalculatorD" default="main" basedir=".">
 
+	<property name="class.dir" value="class" />
+	<property name="src.dir" value="src" />
+	<property name="test.dir" value="test" />
+	<property name="doc.dir" value="doc" />
+	<property name="jarfile" value="CalculatorD.jar" />
+	<property name="compiler.arg" value="-Xlint" />
+
 	<target name="main" depends="build">
 	</target>
 
 	<target name="build" description="Builds the main program classes.">
-	        <mkdir dir="class"/>
-		<javac srcdir="src" destdir="class" debug="yes">
-			<compilerarg value="-Xlint" />
+	        <mkdir dir="${class.dir}"/>
+		<javac srcdir="${src.dir}" destdir="${class.dir}" debug="yes">
+			<compilerarg value="${compiler.arg}" />
 		</javac>
 	</target>
 
 	<target name="build-test" description="Builds main program classes and test files." depends="build">
-		<javac srcdir="test" destdir="class" debug="yes" classpath="class">
-			<compilerarg value="-Xlint" />
+		<javac srcdir="${test.dir}" destdir="${class.dir}" debug="yes" classpath="{$class.dir}">
+			<compilerarg value="${compiler.arg}" />
 		</javac>
 
 	</target>
 
 	<target name="clean" description="Deletes class and doc directories.">
-		<delete dir="class"/>
+		<delete dir="${class.dir}"/>
 		<delete file="CalculatorOptions.cfg" />
-		<delete dir="doc" />
-		<delete file="CalculatorD.jar" />
+		<delete dir="${doc.dir}" />
+		<delete file="${jarfile}" />
 	</target>
 
 	<target name="jar" description="Create jar file.">
-		<jar destfile="CalculatorD.jar" basedir="class">
+		<jar destfile="${jarfile}" basedir="${class.dir}">
 			<manifest>
 				<attribute name="Main-Class" value="CalculatorD.Main" />
 			</manifest>
@@ -35,12 +42,12 @@
 	<target name="doc" depends="doc-pub" />
 
 	<target name="doc-pub" description="Javadoc generation (public)">
-		<mkdir dir="doc" />
-		<javadoc sourcepath="src" destdir="doc"/>
+		<mkdir dir="${doc.dir}" />
+		<javadoc sourcepath="${src.dir}" destdir="${doc.dir}"/>
 	</target>
 
 	<target name="doc-priv" description="Javadoc generation (private)">
-		<mkdir dir="doc" />
-		<javadoc sourcepath="src" destdir="doc" access="private"/>
+		<mkdir dir="${doc.dir}" />
+		<javadoc sourcepath="${src.dir}" destdir="${doc.dir}" access="private"/>
 	</target>
 </project>

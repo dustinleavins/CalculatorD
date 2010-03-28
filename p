@@ -1,9 +1,11 @@
 Calculator_Project=~/CalculatorD CD=. {
+build {
 makefile
 build.xml
+}
 
 doc {
-  README
+  README.md
   LICENSE
 }
 
