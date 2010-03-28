@@ -157,10 +157,9 @@ public class Fraction {
             this.denominator = denominator;
         }
     }
- 
 
     /**
-     * :-)
+     *
      * @return numerator of this <code>Fraction</code>
      */
     public BigInteger getNumerator() {
@@ -168,7 +167,7 @@ public class Fraction {
     }
 
     /**
-     * (-:
+     *
      * @return denominator of this <code>Fraction</code>
      */
     public BigInteger getDenominator() {
@@ -262,10 +261,8 @@ public class Fraction {
             returnString = numerator.toString();
         }
         else {
-            n = this.numerator.doubleValue();
-            d = this.denominator.doubleValue();
-            dValueOfFraction = n / d;
-            returnString = String.valueOf(n / d);
+            dValueOfFraction = this.doubleValue();
+            returnString = String.valueOf(dValueOfFraction);
         }
 
         // Error-checking and Identification
@@ -290,6 +287,7 @@ public class Fraction {
      * numerator and denominator as <code>this</code>, <code>false</code>
      * otherwise.
      */
+    @Override
     public boolean equals(Object o){
         Fraction f;
         boolean numEquals;
@@ -315,6 +313,7 @@ public class Fraction {
      * for the numerator and denominator.
      * @return hash code
      */
+    @Override
     public int hashCode() {
         int returnCode = 5;
         returnCode = (31 * returnCode) + numerator.hashCode();

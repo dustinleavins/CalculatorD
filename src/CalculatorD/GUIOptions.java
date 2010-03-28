@@ -195,6 +195,7 @@ public class GUIOptions implements Cloneable{
      * Overrides <code>Object</code>'s implementation of clone.
      * @return clone object
      */
+    @Override 
     public Object clone(){
         GUIOptions cloneOpt = new GUIOptions(this.displayFontSize,
             this.buttonFontSize,
@@ -203,5 +204,4 @@ public class GUIOptions implements Cloneable{
 
         return (Object) cloneOpt;
     }
-
 }

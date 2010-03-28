@@ -72,6 +72,8 @@ public class OptionsFileManager {
             tempString = tempString.substring(4, tempString.length());
             decimalButtonIsDelete = tempString.equals("Yes");
 
+            bReader.close();
+
             returnOptions = new GUIOptions(displayFontSize,
                 buttonFontSize,
                 horizontalAlignment,

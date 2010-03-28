@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 
 import java.io.IOException;
 
@@ -448,14 +449,14 @@ public class CalculatorJFrame extends JFrame {
 
         try {
             optionsFileManager.saveOptions(currentGUIOptions);
-            System.out.println("Successfully saved options.");
         }
         catch (IOException ioe) {
-            // TODO - Do something of substance with this
-            System.out.println("Unable to save options");
+            JOptionPane.showMessageDialog(this,
+                "Something bad happened while trying to save your options.\n" +
+                "Please try again or ask your local computer expert.",
+                "CalculatorD - Error Message",
+                JOptionPane.ERROR_MESSAGE);
         }
-
-        this.pack();
     }
 
     /**
