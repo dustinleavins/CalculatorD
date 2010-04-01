@@ -156,6 +156,6 @@ public class Calculation {
         this.clear();
         listOfCalculationItems.addAll(tempList);
 
-        return returnValue;
+        return returnValue.reduce();
     }
 }

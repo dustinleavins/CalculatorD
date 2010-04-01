@@ -334,6 +334,23 @@ public class Fraction {
     }
 
     /**
+     * Returns a Fraction that represents <code>this</code> in
+     * lowest terms.
+     * @returns <code>this</code> in lowest terms
+     */
+    public Fraction reduce() {
+        if (numerator.equals(denominator)) {
+            return new Fraction(BigInteger.ONE, BigInteger.ONE);
+        }
+
+        BigInteger gcd = numerator.gcd(denominator);
+        BigInteger n = numerator.divide(gcd);
+        BigInteger d = denominator.divide(gcd);
+
+        return new Fraction(n, d);
+    }
+
+    /**
      * Returns a hash code value for <code>this</code> based on hash codes
      * for the numerator and denominator.
      * @return hash code
