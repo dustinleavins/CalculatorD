@@ -47,6 +47,6 @@ public class CalculatorTextField extends JTextField {
      * @param f Fraction to display
      */
     public void setText(Fraction f) {
-        super.setText(f.toString());
+        super.setText(f.toString(false));
     }
 }

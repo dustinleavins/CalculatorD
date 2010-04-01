@@ -246,11 +246,36 @@ public class Fraction {
     public Fraction divide(Fraction f) throws ArithmeticException {
         return this.multiply(f.inverse());
     }
+
+    /**
+     * Returns the string representation of <code>this</code>.
+     * The boolean value passed to this method determines what the String
+     * looks like.  If <code>asDouble</code> is true, the value will match
+     * the string representation of <code>this.doubleValue()</code> (and
+     * <code>this.toString()</code>).  Otherwise, the numerator and 
+     * denominator is explicit in the return string.
+     * @param asDouble
+     */
+    public String toString(boolean asDouble) {
+        if (asDouble) {
+            return this.toString();
+        }
+
+        if (denominator.equals(BigInteger.ONE)) {
+            return numerator.toString();
+        }
+        else {
+            return numerator.toString() + "/" + denominator.toString();
+        }
+    }
     
     /**
      * Returns the string representation of <code>this</code>.
+     * Specifically, this method returns a string representation of 
+     * <code>this</code> as a double.
      * @return string representation
      */
+    @Override
     public String toString() {
         String returnString;
         double n = 0.0;
