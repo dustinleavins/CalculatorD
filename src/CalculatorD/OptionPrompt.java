@@ -49,7 +49,7 @@ public class OptionPrompt extends JDialog {
      */
     public static void showPrompt(GUIOptions currentOptions, 
             CalculatorJFrame f) {
-        GUIOptions tempOptions = (GUIOptions) currentOptions.clone();
+        GUIOptions tempOptions = currentOptions;
         op = new OptionPrompt(tempOptions,f);
         op.pack();
         op.setVisible(true);

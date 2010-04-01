@@ -190,18 +190,4 @@ public class GUIOptions implements Cloneable{
             DEFAULT_HORIZONTAL_ALIGNMENT,
             USE_DECIMAL_BUTTON_FOR_DECIMAL);
     }
-
-    /**
-     * Overrides <code>Object</code>'s implementation of clone.
-     * @return clone object
-     */
-    @Override 
-    public Object clone(){
-        GUIOptions cloneOpt = new GUIOptions(this.displayFontSize,
-            this.buttonFontSize,
-            this.horizontalAlignment,
-            this.useDecimalButtonForDelete);
-
-        return (Object) cloneOpt;
-    }
 }
