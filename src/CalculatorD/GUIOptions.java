@@ -65,10 +65,14 @@ public class GUIOptions implements Cloneable{
      */
     public static final int RIGHT_HORIZONTAL_ALIGNMENT = JTextField.RIGHT;
 
+    public static final DisplayMode DEFAULT_DISPLAY_MODE = 
+        DisplayMode.DECIMAL;
+
     private int displayFontSize;
     private boolean useDecimalButtonForDelete;
     private int horizontalAlignment;
     private int buttonFontSize;
+    private DisplayMode displayMode;
 
     /**
      * Constructor.
@@ -79,11 +83,13 @@ public class GUIOptions implements Cloneable{
      * use the constants provided in <code>GUIOptions</code>
      * @param useDecimalButtonForDelete should the decimal key on the
      * numpad be used as the delete key in the calculator?
+     * @param displayMode display mode to use for calculations
      */
     public GUIOptions(int displayFontSize, 
             int buttonFontSize,
             int horizontalAlignment, 
-            boolean useDecimalButtonForDelete) {
+            boolean useDecimalButtonForDelete,
+            DisplayMode displayMode) {
 
         // Checking & setting displayFontSize
         if (displayFontSize < MIN_FONT_SIZE) {
@@ -118,8 +124,8 @@ public class GUIOptions implements Cloneable{
             this.horizontalAlignment = CENTER_HORIZONTAL_ALIGNMENT;
         }
 
-        // Setting useDecimalButtonForDelete
         this.useDecimalButtonForDelete = useDecimalButtonForDelete;
+        this.displayMode = displayMode;
     }
 
     /**
@@ -158,6 +164,10 @@ public class GUIOptions implements Cloneable{
         return horizontalAlignment;
     }
 
+    public DisplayMode displayMode() {
+        return displayMode;
+    }
+
     /**
      * Returns a <code>GUIOptions</code> object loaded with default
      * options.
@@ -188,6 +198,7 @@ public class GUIOptions implements Cloneable{
         return new GUIOptions(DEFAULT_DISPLAY_FONT_SIZE,
             DEFAULT_BUTTON_FONT_SIZE,
             DEFAULT_HORIZONTAL_ALIGNMENT,
-            USE_DECIMAL_BUTTON_FOR_DECIMAL);
+            USE_DECIMAL_BUTTON_FOR_DECIMAL,
+            DEFAULT_DISPLAY_MODE);
     }
 }

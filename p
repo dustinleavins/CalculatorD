@@ -16,6 +16,7 @@ src=src/CalculatorD filter="*.java" {
   CalculationOperation.java
   CalculatorJFrame.java
   CalculatorTextField.java
+  DisplayMode.java
   Fraction.java
   GUIOptions.java
   Main.java

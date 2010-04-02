@@ -8,6 +8,7 @@ import javax.swing.JSlider;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 
 import java.util.Hashtable;
 
@@ -37,6 +38,7 @@ public class OptionPrompt extends JDialog {
     private JRadioButton leftAlignmentButton;
     private JRadioButton rightAlignmentButton;
     private JRadioButton centerAlignmentButton;
+    private JComboBox displayModeBox;
     private JButton saveAndQuitButton;
     private JButton quitButton;
 
@@ -62,11 +64,12 @@ public class OptionPrompt extends JDialog {
      */
     private OptionPrompt(GUIOptions currentOptions, CalculatorJFrame f) {
         super(f);
-        GridLayout promptLayout = new GridLayout(5,1);
+        GridLayout promptLayout = new GridLayout(6,1);
         JPanel displayFontSizePanel = new JPanel();
         JPanel buttonFontSizePanel = new JPanel();
         JPanel decimalKeyUsagePanel = new JPanel();
         JPanel displayAlignmentPanel = new JPanel();
+        JPanel displayStylePanel = new JPanel();
         JPanel saveAndCancelPanel = new JPanel();
 
         guiOptions = currentOptions;
@@ -137,13 +140,27 @@ public class OptionPrompt extends JDialog {
             break;
         }
 
+        String[] displayModeOptions = { "Decimal: 0.3", "Fraction: 3/10" };
+        displayModeBox = new JComboBox(displayModeOptions);
+
+        switch (guiOptions.displayMode()) {
+        case DECIMAL:
+            displayModeBox.setSelectedIndex(0);
+            break;
+        case FRACTION:
+            displayModeBox.setSelectedIndex(1);
+            break;
+        default:
+            break;
+        }
+
         saveAndQuitButton = new JButton("OK");
         quitButton = new JButton("Cancel");
 
         this.setLayout(promptLayout);
         decimalKeyUsagePanel.setLayout(new BorderLayout());
         displayAlignmentPanel.setLayout(new BorderLayout());
-
+        
         displayFontSizePanel.add(
             new JLabel("Text size of number display:"));
         displayFontSizePanel.add(displayFontSizeSlider);
@@ -174,6 +191,13 @@ public class OptionPrompt extends JDialog {
         tempPanel.add(rightAlignmentButton);
         displayAlignmentPanel.add(tempPanel, BorderLayout.CENTER);
 
+        displayStylePanel.setLayout(new BorderLayout());
+        displayStylePanel.add(
+            new JLabel("How to display results:"),
+            BorderLayout.NORTH);
+        displayStylePanel.add(
+            displayModeBox,
+            BorderLayout.CENTER);
 
         saveAndCancelPanel.add(saveAndQuitButton);
         saveAndCancelPanel.add(quitButton);
@@ -182,6 +206,7 @@ public class OptionPrompt extends JDialog {
         this.add(buttonFontSizePanel);
         this.add(decimalKeyUsagePanel);
         this.add(displayAlignmentPanel);
+        this.add(displayStylePanel);
         this.add(saveAndCancelPanel);
 
         saveAndQuitButton.addActionListener(new ActionListener(){
@@ -189,6 +214,7 @@ public class OptionPrompt extends JDialog {
                 int alignment;
                 boolean udbd = 
                     useDecimalKeyForDeleteButton.isSelected();
+                DisplayMode displayMode;
 
                 if (leftAlignmentButton.isSelected()) {
                     alignment = GUIOptions.LEFT_HORIZONTAL_ALIGNMENT;
@@ -200,12 +226,20 @@ public class OptionPrompt extends JDialog {
                     alignment = GUIOptions.CENTER_HORIZONTAL_ALIGNMENT;
                 }
 
+                if (displayModeBox.getSelectedIndex() == 0) {
+                    displayMode = DisplayMode.DECIMAL;
+                }
+                else {
+                    displayMode = DisplayMode.FRACTION;
+                }
+
 
                 OptionPrompt.guiOptions = new GUIOptions(
                     displayFontSizeSlider.getValue(),
                     buttonFontSizeSlider.getValue(),
                     alignment,
-                    udbd);
+                    udbd,
+                    displayMode);
 
 
                 OptionPrompt.op.setVisible(false);

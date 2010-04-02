@@ -426,6 +426,8 @@ public class CalculatorJFrame extends JFrame {
         negateButton.setFont(generateFont(guiO.buttonFontSize()));
         clearButton.setFont(generateFont(guiO.buttonFontSize()));
 
+        numberTextField.displayResultsAs(guiO.displayMode());
+
         try {
             optionsFileManager.saveOptions(currentGUIOptions);
         }

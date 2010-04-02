@@ -12,6 +12,7 @@ public class CalculatorTextField extends JTextField {
     private static final int DEFAULT_CTF_COLUMNS = 18;
     private static final long serialVersionUID = 4517210125082963647L;
     private boolean displayMode;
+    private DisplayMode displayResultsAs;
 
     /**
      * Constructor
@@ -20,6 +21,7 @@ public class CalculatorTextField extends JTextField {
         this.setColumns(DEFAULT_CTF_COLUMNS);
         this.setEditable(false);
         this.displayMode = false;
+        this.displayResultsAs = GUIOptions.DEFAULT_DISPLAY_MODE;
     }
 
     /**
@@ -47,6 +49,15 @@ public class CalculatorTextField extends JTextField {
      * @param f Fraction to display
      */
     public void setText(Fraction f) {
-        super.setText(f.toString(true));
+        if (displayResultsAs == DisplayMode.DECIMAL) {
+            super.setText(f.toString(true));
+        }
+        else {
+            super.setText(f.toString(false));
+        }
+    }
+
+    public void displayResultsAs(DisplayMode dm) {
+        this.displayResultsAs = dm;
     }
 }

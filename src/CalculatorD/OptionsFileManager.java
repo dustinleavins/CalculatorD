@@ -40,11 +40,12 @@ public class OptionsFileManager {
      */
     public GUIOptions readOptions() {
         FileReader fr;
-        BufferedReader bReader;
-        int displayFontSize;
-        int buttonFontSize;
-        int horizontalAlignment;
-        boolean decimalButtonIsDelete;
+        BufferedReader bReader = null;
+        int displayFontSize = GUIOptions.DEFAULT_DISPLAY_FONT_SIZE;
+        int buttonFontSize = GUIOptions.DEFAULT_BUTTON_FONT_SIZE;
+        int horizontalAlignment = GUIOptions.DEFAULT_HORIZONTAL_ALIGNMENT;
+        boolean decimalButtonIsDelete = GUIOptions.USE_DECIMAL_BUTTON_FOR_DECIMAL;
+        DisplayMode displayMode = GUIOptions.DEFAULT_DISPLAY_MODE;
         String tempString;
         GUIOptions returnOptions;
 
@@ -72,16 +73,31 @@ public class OptionsFileManager {
             tempString = tempString.substring(4, tempString.length());
             decimalButtonIsDelete = tempString.equals("Yes");
 
-            bReader.close();
+            // Reading displayMode from file
+            tempString = bReader.readLine();
+            tempString = tempString.substring(3, tempString.length());
 
+            if (tempString.equals("DECIMAL")) {
+                displayMode = DisplayMode.DECIMAL;
+            }
+            else if (tempString.equals("FRACTION")){
+                displayMode = DisplayMode.FRACTION;
+            }
+
+            bReader.close();
+        }
+        catch (IOException ioe) {
+            // Currently, do nothing
+        }
+        catch (NullPointerException npe) {
+            // Currently, do nothing
+        }
+        finally {
             returnOptions = new GUIOptions(displayFontSize,
                 buttonFontSize,
                 horizontalAlignment,
-                decimalButtonIsDelete);
-
-        }
-        catch (IOException ioe) {
-            returnOptions = GUIOptions.defaultOptions();
+                decimalButtonIsDelete,
+                displayMode);
         }
 
         return returnOptions;
@@ -113,6 +129,9 @@ public class OptionsFileManager {
             sb.append(horizontalAlignment + "\n");
             sb.append("udb:");
             sb.append(decimalButtonIsDelete ? "Yes\n" : "No\n");
+            sb.append("dm:");
+            sb.append(o.displayMode());
+            sb.append("\n");
 
             writer.write(sb.toString());
             writer.close();
