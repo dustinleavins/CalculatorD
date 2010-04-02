@@ -36,7 +36,7 @@ public class OptionsFileManager {
      * calling <code>saveOptions</code> not need to be concerned with them.
      * @return options from the file specified in the constructor for
      * <code>this</code>.  If the file cannot be read from, 
-     * <code>GUIOptions.defaultOptions()</code> is returned automatically.
+     * a set of default options is returned automatically.
      */
     public GUIOptions readOptions() {
         FileReader fr;

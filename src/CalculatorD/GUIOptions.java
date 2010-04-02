@@ -164,6 +164,11 @@ public class GUIOptions implements Cloneable{
         return horizontalAlignment;
     }
 
+    /**
+     * Returns the display mode to use for calculations, as dictated
+     * by <code>this</code>.
+     * @return the display mode
+     */
     public DisplayMode displayMode() {
         return displayMode;
     }
@@ -189,8 +194,10 @@ public class GUIOptions implements Cloneable{
      *         <td>Use Decimal Button For</td>
      *         <td>Decimal</td>
      *     </tr>
-
-
+     *     <tr>
+     *         <td>Display Mode</td>
+     *         <td>Decimal</td>
+     *     </tr>
      * </table>
      * @return default <code>GUIOptions</code>
      */

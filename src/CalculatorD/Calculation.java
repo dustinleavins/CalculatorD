@@ -13,6 +13,9 @@ import java.util.NoSuchElementException;
  * infix notation, and this notation is adhered to in such a manner as to
  * require no intervention by the class using a <code>Calculation</code>
  * object.
+ * The calculation's order of operations is strictly left to right, meaning
+ * that multiplication (and division) have the same precendence as addition
+ * (and subtraction).
  * @author Dustin Leavins
  */
 public class Calculation {
@@ -78,10 +81,25 @@ public class Calculation {
         listOfCalculationItems.add(new CalculationOperation(d));
     }
 
+    /**
+     * Clears the current calculation of all numbers and operations.
+     */
     public void clear() {
         listOfCalculationItems = new LinkedList<CalculationItem>();
     }
 
+    /**
+     * Calculates and returns the value of the current calculation,
+     * ignoring operations at the very end of the calculation.
+     * Example calculations and results:
+     * <ul>
+     *     <li>(1/2) + (1/2) = 1</li>
+     *     <li>(1/2) + = (1/2)</li>
+     *     <li>(1/2) + 1 * 2 = 3</li>
+     * </ul>
+     * All operators have the same precedence.
+     * @return value of current calculation
+     */
     public Fraction getValue() {
         CalculationItem aItem;
         CalculationItem bItem;
