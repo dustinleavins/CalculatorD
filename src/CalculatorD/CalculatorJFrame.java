@@ -202,14 +202,13 @@ public class CalculatorJFrame extends JFrame {
                     oldNTAText = "";
                 }
 
-                // If displayMode is current true, then
+                // If numberTextField.getResultMode() is true, then
                 // numberTextField is currently showing
                 // the value of a calculation.
                 // Instead of appending to this value,
-                // the number to add is shown on the display
-                // instead of the result.
-                if (numberTextField.getDisplayMode()) {
-                    numberTextField.setDisplayMode(false);
+                // the number replaces the result.
+                if (numberTextField.getResultMode()) {
+                    numberTextField.setResultMode(false);
                     numberTextField.setText(textToAppend);
                 }
                 else if (oldNTAText.length() < numberTextField.getColumns()) {
@@ -226,7 +225,7 @@ public class CalculatorJFrame extends JFrame {
 
         addButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae) {
-                if (numberTextField.getDisplayMode()) {
+                if (numberTextField.getResultMode()) {
                     currentCalculation.appendOperation(Operation.PLUS);
                 }
                 else {
@@ -237,7 +236,7 @@ public class CalculatorJFrame extends JFrame {
 
                     numberTextField.setText(currentCalculation.getValue());
 
-                    numberTextField.setDisplayMode(true);
+                    numberTextField.setResultMode(true);
                 }
 
                 numberTextField.requestFocus();
@@ -246,7 +245,7 @@ public class CalculatorJFrame extends JFrame {
 
         subtractButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae) {
-                if (numberTextField.getDisplayMode()) {
+                if (numberTextField.getResultMode()) {
                     currentCalculation.appendOperation(Operation.MINUS);
                 }
                 else {
@@ -257,7 +256,7 @@ public class CalculatorJFrame extends JFrame {
 
                     numberTextField.setText(currentCalculation.getValue());
 
-                    numberTextField.setDisplayMode(true);
+                    numberTextField.setResultMode(true);
                 }
 
                 numberTextField.requestFocus();
@@ -266,7 +265,7 @@ public class CalculatorJFrame extends JFrame {
 
         multiplyButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae) {
-                if (numberTextField.getDisplayMode()) {
+                if (numberTextField.getResultMode()) {
                     currentCalculation.appendOperation(Operation.MULTIPLY);
                 }
                 else {
@@ -277,7 +276,7 @@ public class CalculatorJFrame extends JFrame {
 
                     numberTextField.setText(currentCalculation.getValue());
 
-                    numberTextField.setDisplayMode(true);
+                    numberTextField.setResultMode(true);
 
                 }
 
@@ -287,7 +286,7 @@ public class CalculatorJFrame extends JFrame {
 
         divideButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae) {
-                if (numberTextField.getDisplayMode()) {
+                if (numberTextField.getResultMode()) {
                     currentCalculation.appendOperation(Operation.DIVIDE);
                 }
                 else {
@@ -298,7 +297,7 @@ public class CalculatorJFrame extends JFrame {
 
                     numberTextField.setText(currentCalculation.getValue());
 
-                    numberTextField.setDisplayMode(true);
+                    numberTextField.setResultMode(true);
                 }
 
                 numberTextField.requestFocus();
@@ -307,7 +306,7 @@ public class CalculatorJFrame extends JFrame {
 
         equalsButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae) {
-                if (numberTextField.getDisplayMode()) {
+                if (numberTextField.getResultMode()) {
                     // Do absolutely nothing!
                 }
                 else {
@@ -316,7 +315,7 @@ public class CalculatorJFrame extends JFrame {
 
                     numberTextField.setText(currentCalculation.getValue());
 
-                    numberTextField.setDisplayMode(true);
+                    numberTextField.setResultMode(true);
                 }
 
                 numberTextField.requestFocus();
@@ -325,8 +324,8 @@ public class CalculatorJFrame extends JFrame {
 
         decimalButton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae) {
-                if (numberTextField.getDisplayMode()) {
-                    numberTextField.setDisplayMode(false);
+                if (numberTextField.getResultMode()) {
+                    numberTextField.setResultMode(false);
                     numberTextField.setText("0.");
                 }
                 else if (!(numberTextField.getText().contains("."))) {
@@ -358,8 +357,8 @@ public class CalculatorJFrame extends JFrame {
             public void actionPerformed(ActionEvent ae) {
                 String t = numberTextField.getText();
 
-                if (numberTextField.getDisplayMode()) {
-                    numberTextField.setDisplayMode(false);
+                if (numberTextField.getResultMode()) {
+                    numberTextField.setResultMode(false);
                 }
                 
                 if (t.startsWith("-")) {
