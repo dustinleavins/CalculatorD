@@ -1,4 +1,4 @@
-package CalculatorD.Test;
+    package CalculatorD.Test;
 import CalculatorD.*;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -25,23 +25,26 @@ public class TestCalculation {
         Fraction result;
 
         //---Addition Test---
+        // (1/3) + (5/3) = (6/3) = 2
         a = new Fraction(1,3);
         b = new Fraction(5,3);
-        result = new Fraction(18,9);
+        result = new Fraction(2,1);
         calc.appendNumber(a);
         calc.appendOperation(Operation.PLUS);
         calc.appendNumber(b);
         assertTrue(result.equals(calc.getValue()));
 
         //---Subtraction Test---
+        // (1/3) - (5/3) = (-4/3)
         calc.clear();
-        result = new Fraction(-12,9);
+        result = new Fraction(-4,3);
         calc.appendNumber(a);
         calc.appendOperation(Operation.MINUS);
         calc.appendNumber(b);
         assertTrue(result.equals(calc.getValue()));
 
         //---Multiplication Test---
+        // (1/3) * (5/3) = (5/9)
         calc.clear();
         result = new Fraction(5,9);
         calc.appendNumber(a);
@@ -50,8 +53,9 @@ public class TestCalculation {
         assertTrue(result.equals(calc.getValue()));
 
         //---Division Test---
+        // (1/3) / (5/3) = (1/5)
         calc.clear();
-        result = new Fraction(3, 15);
+        result = new Fraction(1, 5);
         calc.appendNumber(a);
         calc.appendOperation(Operation.DIVIDE);
         calc.appendNumber(b);
