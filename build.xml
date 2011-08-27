@@ -12,7 +12,7 @@
 
 	<target name="build" description="Builds the main program classes.">
 	        <mkdir dir="${class.dir}"/>
-		<javac srcdir="${src.dir}" destdir="${class.dir}" debug="yes">
+		<javac srcdir="${src.dir}" destdir="${class.dir}" debug="yes" includeantruntime="false">
 			<compilerarg value="${compiler.arg}" />
 		</javac>
 	</target>
