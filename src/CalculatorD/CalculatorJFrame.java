@@ -108,7 +108,7 @@ public class CalculatorJFrame extends JFrame {
         addButton = new JButton("+");
         subtractButton = new JButton("-");
         multiplyButton = new JButton("x *");
-        divideButton = new JButton("÷ /");
+        divideButton = new JButton("\u00F7 /");
         decimalButton = new JButton(".");
         deleteButton = new JButton("Delete");
         equalsButton = new JButton("=");
@@ -446,7 +446,7 @@ public class CalculatorJFrame extends JFrame {
      * @return font of the specified size
      */
      private Font generateFont(int size) {
-        return new Font(Font.MONOSPACED, Font.PLAIN, size);
+        return new Font("Courier", Font.PLAIN, size);
      }
 
     /**
