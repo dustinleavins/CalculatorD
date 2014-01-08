@@ -8,20 +8,38 @@ public enum Operation {
     /**
      * Addition.
      */
-    PLUS, 
+    PLUS {
+        Fraction apply(Fraction l, Fraction r) {
+            return l.add(r);
+        } 
+    }, 
 
     /**
      * Subtraction.
      */
-    MINUS,
+    MINUS {
+        Fraction apply(Fraction l, Fraction r) {
+            return l.subtract(r);
+        } 
+    },
 
     /**
      * Multiplication.
      */
-    MULTIPLY,
+    MULTIPLY {
+        Fraction apply(Fraction l, Fraction r) {
+            return l.multiply(r);
+        } 
+    },
 
     /**
      * Division
      */
-    DIVIDE;
+    DIVIDE {
+        Fraction apply(Fraction l, Fraction r) {
+            return l.divide(r);
+        } 
+    };
+
+    abstract Fraction apply(Fraction left, Fraction right);
 }

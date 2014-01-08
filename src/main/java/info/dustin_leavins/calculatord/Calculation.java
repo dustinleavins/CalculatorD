@@ -141,23 +141,7 @@ public class Calculation {
             b = bItem.getFraction();
             operation = opItem.getOperation();
 
-            switch(operation) {
-                case PLUS:
-                    returnValue = a.add(b);
-                    break;
-                case MINUS:
-                    returnValue = a.subtract(b);
-                    break;
-                case MULTIPLY:
-                    returnValue = a.multiply(b);
-                    break;
-                case DIVIDE:
-                    returnValue = a.divide(b);
-                    break;
-                default:
-                    break;
-            }
-
+            returnValue = operation.apply(a, b);
             tempList.push(CalculationEntry.fraction(returnValue));
         }
 
