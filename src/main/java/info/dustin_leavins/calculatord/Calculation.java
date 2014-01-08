@@ -19,13 +19,13 @@ import java.util.NoSuchElementException;
  * @author Dustin Leavins
  */
 public class Calculation {
-    private LinkedList<CalculationItem> listOfCalculationItems;
+    private LinkedList<CalculationEntry> listOfCalculationItems;
 
     /**
      * Constructor; contains no default calculation.
      */
     public Calculation() {
-        listOfCalculationItems = new LinkedList<CalculationItem>();
+        listOfCalculationItems = new LinkedList<CalculationEntry>();
     }
 
     /**
@@ -35,12 +35,12 @@ public class Calculation {
      * it is automatically removed.
      */
     public void appendNumber(Fraction f) {
-        CalculationItem lastItem;
+        CalculationEntry lastItem;
         boolean lastItemIsNumber;
 
         try {
             lastItem = listOfCalculationItems.getLast();
-            lastItemIsNumber = lastItem.representsNumber();
+            lastItemIsNumber = lastItem.representsFraction();
         }
         catch(NoSuchElementException nsee) {
             lastItemIsNumber = false;
@@ -50,7 +50,7 @@ public class Calculation {
             listOfCalculationItems.removeLast();
         }
 
-        listOfCalculationItems.add(new CalculationNumber(f));
+        listOfCalculationItems.add(CalculationEntry.fraction(f));
     }
 
     /**
@@ -62,7 +62,7 @@ public class Calculation {
      * this class uses infix notation for calculations).
      */
     public void appendOperation(Operation d) {
-        CalculationItem lastItem;
+        CalculationEntry lastItem;
         boolean lastItemIsOperation;
 
         try {
@@ -78,14 +78,14 @@ public class Calculation {
             listOfCalculationItems.removeLast();
         }
 
-        listOfCalculationItems.add(new CalculationOperation(d));
+        listOfCalculationItems.add(CalculationEntry.operation(d));
     }
 
     /**
      * Clears the current calculation of all numbers and operations.
      */
     public void clear() {
-        listOfCalculationItems = new LinkedList<CalculationItem>();
+        listOfCalculationItems = new LinkedList<CalculationEntry>();
     }
 
     /**
@@ -101,9 +101,9 @@ public class Calculation {
      * @return value of current calculation
      */
     public Fraction getValue() {
-        CalculationItem aItem;
-        CalculationItem bItem;
-        CalculationItem opItem;
+        CalculationEntry aItem;
+        CalculationEntry bItem;
+        CalculationEntry opItem;
         Fraction returnValue = Fraction.ZERO;
         boolean illegalCalculation = false;
 
@@ -111,8 +111,8 @@ public class Calculation {
         Fraction a = Fraction.ZERO;
         Fraction b = Fraction.ZERO;
 
-        LinkedList<CalculationItem> tempList = 
-            new LinkedList<CalculationItem>(listOfCalculationItems);
+        LinkedList<CalculationEntry> tempList = 
+            new LinkedList<CalculationEntry>(listOfCalculationItems);
 
         // Without the folling if statement, this method always
         // returns 0 if there are less than three elements in
@@ -121,8 +121,8 @@ public class Calculation {
         if (tempList.size() <= 2) {
             aItem = tempList.pop(); // short for aItem
 
-            if (aItem.representsNumber()) {
-                return ((CalculationNumber) aItem).getFraction();
+            if (aItem.representsFraction()) {
+                return aItem.getFraction();
             }
             else{
                 return Fraction.ZERO;
@@ -135,18 +135,19 @@ public class Calculation {
             bItem = tempList.pop();
 
             illegalCalculation = aItem.representsOperation() ||
-                opItem.representsNumber() || 
+                opItem.representsFraction() || 
                 bItem.representsOperation();
 
             if (illegalCalculation) {
+                // TODO: Throw exception?
                 returnValue = Fraction.ZERO;
                 System.out.println("OperationFailed");
                 break;
             }
 
-            a = ((CalculationNumber)aItem).getFraction();
-            b = ((CalculationNumber)bItem).getFraction();
-            operation = ((CalculationOperation)opItem).getOperation();
+            a = aItem.getFraction();
+            b = bItem.getFraction();
+            operation = opItem.getOperation();
 
             switch(operation) {
                 case PLUS:
@@ -165,7 +166,7 @@ public class Calculation {
                     break;
             }
 
-            tempList.push(new CalculationNumber(returnValue));
+            tempList.push(CalculationEntry.fraction(returnValue));
         }
 
         /* The contents of this calculation does not matter; only the
