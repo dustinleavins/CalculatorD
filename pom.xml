@@ -4,7 +4,7 @@
   <groupId>info.dustin_leavins.calculatord</groupId>
   <artifactId>CalculatorD</artifactId>
   <packaging>jar</packaging>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <name>CalculatorD</name>
   <url>http://www.dustin-leavins.info</url>
   <dependencies>
