@@ -254,6 +254,21 @@ public class TestFraction {
     }
 
     @Test
+    public void reduce() {
+        Fraction f = new Fraction(1,3);
+        assertTrue(f.reduce().equals(f));
+
+        f = new Fraction(2,6);
+        assertTrue(f.reduce().equals(new Fraction(1,3)));
+
+        f = new Fraction(6,2);
+        assertTrue(f.reduce().equals(new Fraction(3, 1)));
+
+        f = new Fraction(-2, 6);
+        assertTrue(f.reduce().equals(new Fraction(-1, 3)));
+    }
+
+    @Test
     public void testHashCode() {
         Fraction f1 = new Fraction(3,1);
         Fraction f2 = new Fraction("3");
