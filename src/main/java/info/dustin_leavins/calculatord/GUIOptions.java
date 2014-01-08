@@ -1,3 +1,6 @@
+// Copyright (c) 2014 Dustin Leavins
+// See the file 'LICENSE' for copying permission.
+
 package info.dustin_leavins.calculatord;
 
 import javax.swing.JTextField;
