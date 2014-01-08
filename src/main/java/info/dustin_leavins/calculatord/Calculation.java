@@ -35,18 +35,14 @@ public class Calculation {
      * it is automatically removed.
      */
     public void appendNumber(Fraction f) {
-        CalculationEntry lastItem;
-        boolean lastItemIsNumber;
-
-        try {
-            lastItem = listOfCalculationItems.getLast();
-            lastItemIsNumber = lastItem.representsFraction();
-        }
-        catch(NoSuchElementException nsee) {
-            lastItemIsNumber = false;
+        if (listOfCalculationItems.size() == 0) {
+          listOfCalculationItems.add(CalculationEntry.fraction(f));
+          return;
         }
 
-        if (lastItemIsNumber) {
+        CalculationEntry lastItem = listOfCalculationItems.getLast();
+
+        if (lastItem.representsFraction()) {
             listOfCalculationItems.removeLast();
         }
 
@@ -62,19 +58,14 @@ public class Calculation {
      * this class uses infix notation for calculations).
      */
     public void appendOperation(Operation d) {
-        CalculationEntry lastItem;
-        boolean lastItemIsOperation;
-
-        try {
-            lastItem = listOfCalculationItems.getLast();
-            lastItemIsOperation = lastItem.representsOperation();
-        }
-        catch(NoSuchElementException nsee) {
-        // operation cannot be the first item in a calculation
-            return;         
+        if (listOfCalculationItems.size() == 0) {
+            // operation cannot be the first item in a calculation
+            return;
         }
 
-        if (lastItemIsOperation) {
+        CalculationEntry lastItem = listOfCalculationItems.getLast();
+
+        if (lastItem.representsOperation()) {
             listOfCalculationItems.removeLast();
         }
 
@@ -85,7 +76,7 @@ public class Calculation {
      * Clears the current calculation of all numbers and operations.
      */
     public void clear() {
-        listOfCalculationItems = new LinkedList<CalculationEntry>();
+        listOfCalculationItems.clear();
     }
 
     /**
@@ -114,11 +105,12 @@ public class Calculation {
         LinkedList<CalculationEntry> tempList = 
             new LinkedList<CalculationEntry>(listOfCalculationItems);
 
-        // Without the folling if statement, this method always
+        // Without the folling if statements, this method always
         // returns 0 if there are less than three elements in
         // listOfCalculationItems
-
-        if (tempList.size() <= 2) {
+        if (tempList.size() == 0) {
+            return Fraction.ZERO;
+        } else if (tempList.size() <= 2) {
             aItem = tempList.pop(); // short for aItem
 
             if (aItem.representsFraction()) {
