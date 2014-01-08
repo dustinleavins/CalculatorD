@@ -1,4 +1,4 @@
-package CalculatorD;
+package info.dustin_leavins.calculatord;
 
 import java.awt.BorderLayout;
 import java.awt.Font;

@@ -1,4 +1,4 @@
-package CalculatorD;
+package info.dustin_leavins.calculatord;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;

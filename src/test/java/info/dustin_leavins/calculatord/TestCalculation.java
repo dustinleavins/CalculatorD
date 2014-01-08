@@ -1,22 +1,13 @@
-    package CalculatorD.Test;
-import CalculatorD.*;
-import org.junit.*;
-import static org.junit.Assert.*;
+package info.dustin_leavins.calculatord;
+
+import junit.framework.Test;
+import junit.framework.TestCase;
 
 /**
  * Simple test class for the <code>Calculation</code> class.
  * @author Dustin Leavins
  */
-public class TestCalculation {
-    /**
-     * Main
-     * @param args unused
-     */
-    public static void main (String [] args) {
-        org.junit.runner.JUnitCore.main("CalculatorD.Test.TestCalculation");
-    }
-
-    @Test
+public class TestCalculation extends TestCase {
     public void testMain() {
         Calculation calc = new Calculation();
         Fraction a;

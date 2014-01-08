@@ -1,8 +1,2 @@
-# ignore class folder
-class/*
-# ignore doc folder
-doc/*
-# ignore CalculatorD.jar
-CalculatorD.jar
-# ignore config file
+target/*
 CalculatorOptions.cfg

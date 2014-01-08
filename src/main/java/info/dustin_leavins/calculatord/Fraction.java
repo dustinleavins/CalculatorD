@@ -1,4 +1,5 @@
-package CalculatorD;
+package info.dustin_leavins.calculatord;
+
 import java.math.BigInteger;
 import java.math.BigDecimal;
 

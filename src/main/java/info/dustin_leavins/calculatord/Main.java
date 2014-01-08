@@ -1,4 +1,4 @@
-package CalculatorD;
+package info.dustin_leavins.calculatord;
 
 /**
  * Class containing the <code>main</code> method of the Calculator

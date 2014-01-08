@@ -1,4 +1,4 @@
-package CalculatorD;
+package info.dustin_leavins.calculatord;
 
 import java.io.File;
 import java.io.FileWriter;

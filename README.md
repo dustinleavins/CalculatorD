@@ -17,7 +17,7 @@ On other systems, open your terminal, cd to the directory that you placed `Calcu
 
 On any system where CalculatorD works, the program generates a file by the name of `CalculatorOptions.cfg` in the same directory as `CalculatorD.jar`.  This file stores program options that you can set from within the program.
 
-If you're a developer, you can use the provided makefile (or the provided Ant `build.xml`) to compile, generate documentation, and all sorts of other fun stuff.
+If you're a developer, this project uses Maven.
 
 Files Found Here
 ================
@@ -29,25 +29,17 @@ Files Found Here
 
     Legal mumbo-jumbo
 
-- *makefile*
-
-    For use by developers/programmers/code monkeys/sysadmins/other weirdos
+- *pom.xml*
+    
+    Maven build file.
 
 - *build.xml*
 
     Have Apache Ant?  Want to use it instead of make?  This file is for you.
 
-- *p*
-
-    Project file for project.vim (a project manager for Vim)
-
 - *src/...*
 
-    Source code written in Java
-
-- *test/...*
-
-    Source code written in Java for test classes.  Uses JUnit4.
+    Source code written in Java. Test code currently uses JUnit 3.
 
 License
 =======

@@ -1,4 +1,4 @@
-package CalculatorD;
+package info.dustin_leavins.calculatord;
 
 /**
  * Class implementing <code>CalculationItem</code> that 

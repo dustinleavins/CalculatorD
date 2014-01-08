@@ -1,4 +1,5 @@
-package CalculatorD;
+package info.dustin_leavins.calculatord;
+
 /**
  * Represents a display mode for the calculation result.
  * @author Dustin Leavins
