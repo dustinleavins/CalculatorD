@@ -1,11 +1,16 @@
 package info.dustin_leavins.calculatord;
 
 import java.math.BigInteger;
-import junit.framework.Test;
-import junit.framework.TestCase;
+import static org.junit.Assert.*;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-public class TestFraction extends TestCase {
-    public void testStringConstructor() {
+@RunWith(JUnit4.class)
+public class TestFraction {
+
+    @Test
+    public void stringConstructor() {
         Fraction f;
         BigInteger correctNumerator = BigInteger.valueOf(10);
         BigInteger correctDenominator = BigInteger.valueOf(1);
@@ -29,7 +34,8 @@ public class TestFraction extends TestCase {
         assertEquals(f.getDenominator(), correctDenominator);
     }
 
-    public void testIntegerConstructor() {
+    @Test
+    public void integerConstructor() {
         Fraction f;
         BigInteger correctNumerator = BigInteger.valueOf(10);
         BigInteger correctDenominator = BigInteger.valueOf(1);
@@ -70,6 +76,7 @@ public class TestFraction extends TestCase {
         }
     }
 
+    @Test
     public void testLongConstructor() {
         Fraction f;
         BigInteger correctNumerator = BigInteger.valueOf(10);
@@ -111,6 +118,7 @@ public class TestFraction extends TestCase {
         }
     }
 
+    @Test
     public void testDoubleValue() {
         Fraction f = new Fraction("0.2");
         double d = 0.2D;
@@ -120,6 +128,7 @@ public class TestFraction extends TestCase {
         assertTrue(0 == Double.compare(f.doubleValue(), d));
     }
 
+    @Test
     public void testAddition() {
         Fraction x;
         Fraction y;
@@ -139,6 +148,7 @@ public class TestFraction extends TestCase {
 
     }
 
+    @Test
     public void testSubtraction() {
         Fraction x;
         Fraction y;
@@ -156,6 +166,7 @@ public class TestFraction extends TestCase {
         assertTrue(difference.equals(x.subtract(y)));
     }
 
+    @Test
     public void testMultiply() {
         Fraction x;
         Fraction y;
@@ -168,6 +179,7 @@ public class TestFraction extends TestCase {
         assertTrue(product.equals(x.multiply(y)));
     }
 
+    @Test
     public void testNegative() {
         Fraction f = new Fraction(9,3);
         Fraction negativeF = new Fraction(-9,3);
@@ -175,6 +187,7 @@ public class TestFraction extends TestCase {
         assertTrue(negativeF.equals(f.negative()));
     }
 
+    @Test
     public void testDivide() {
         Fraction x;
         Fraction y;
@@ -187,6 +200,7 @@ public class TestFraction extends TestCase {
         assertTrue(quotient.equals(x.divide(y)));
     }
 
+    @Test
     public void testInverse() {
         Fraction f = new Fraction(-1,99);
         Fraction result = new Fraction(-99,1);
@@ -206,6 +220,7 @@ public class TestFraction extends TestCase {
         }
     }
 
+    @Test
     public void testEquals() {
         Fraction x = new Fraction(3,10);
         Fraction y = new Fraction("0.3");
@@ -238,6 +253,7 @@ public class TestFraction extends TestCase {
         assertFalse(x.equals(BigInteger.valueOf(4)));
     }
 
+    @Test
     public void testHashCode() {
         Fraction f1 = new Fraction(3,1);
         Fraction f2 = new Fraction("3");

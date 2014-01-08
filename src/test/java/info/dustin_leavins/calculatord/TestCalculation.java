@@ -1,14 +1,19 @@
 package info.dustin_leavins.calculatord;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
+import static org.junit.Assert.*;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
 /**
  * Simple test class for the <code>Calculation</code> class.
  * @author Dustin Leavins
  */
-public class TestCalculation extends TestCase {
-    public void testMain() {
+@RunWith(JUnit4.class)
+public class TestCalculation {
+
+    @Test
+    public void everything() {
         Calculation calc = new Calculation();
         Fraction a;
         Fraction b;
@@ -82,7 +87,7 @@ public class TestCalculation extends TestCase {
         calc.appendNumber(b);
         calc.appendOperation(Operation.PLUS);
         calc.appendNumber(c);
-        //System.out.println("5 4 + 99 = 4 + 99 = " + calc.getValue());
+
         assertTrue(result.equals(calc.getValue()));
     }
 }
