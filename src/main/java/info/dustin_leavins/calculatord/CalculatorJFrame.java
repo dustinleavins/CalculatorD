@@ -132,7 +132,7 @@ public class CalculatorJFrame extends JFrame {
         operationsPanel.add(equalsButton);
 
         this.add(numberTextField, BorderLayout.NORTH);
-        this.add(numberButtonsPanel, BorderLayout.WEST);
+        this.add(numberButtonsPanel, BorderLayout.CENTER);
         this.add(operationsPanel, BorderLayout.EAST);
 
         JMenuBar calcMenuBar = new JMenuBar();
@@ -145,7 +145,7 @@ public class CalculatorJFrame extends JFrame {
 
         // KeyAdapter for numberTextField;
         numberTextField.addKeyListener(new KeyAdapter(){
-            public void keyTyped(KeyEvent e) {
+            public void keyPressed(KeyEvent e) {
                 char c = e.getKeyChar();
 
                 switch(c) {
@@ -184,6 +184,13 @@ public class CalculatorJFrame extends JFrame {
                     else {
                         decimalButton.doClick();
                     }
+                    break;
+                case(KeyEvent.VK_BACK_SPACE):
+                case(KeyEvent.VK_DELETE):
+                    deleteButton.doClick();
+                    break;
+                case(KeyEvent.VK_ESCAPE):
+                    clearDisplay();
                     break;
                 default:
                     break;
@@ -460,5 +467,12 @@ public class CalculatorJFrame extends JFrame {
     private void clearCalculationAndDisplay() {
         numberTextField.setText("0");
         currentCalculation.clear();
+    }
+
+    /**
+     * Clears <code>numberTextField</code>.
+     */
+    private void clearDisplay() {
+        numberTextField.setText("0");
     }
 }
