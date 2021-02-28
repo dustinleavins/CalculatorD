@@ -1,4 +1,4 @@
-// Copyright (c) 2014 Dustin Leavins
+// Copyright (c) 2014, 2021 Dustin Leavins
 // See the file 'LICENSE' for copying permission.
 
 package info.dustin_leavins.calculatord;
@@ -15,7 +15,6 @@ import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.JMenuBar;

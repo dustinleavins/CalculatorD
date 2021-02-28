@@ -1,10 +1,9 @@
-// Copyright (c) 2014 Dustin Leavins
+// Copyright (c) 2014, 2021 Dustin Leavins
 // See the file 'LICENSE' for copying permission.
 
 package info.dustin_leavins.calculatord;
 
 import java.math.BigInteger;
-import java.math.BigDecimal;
 
 /**
  * Represents a fraction, and includes various operations (addition,
@@ -282,8 +281,6 @@ public class Fraction {
     @Override
     public String toString() {
         String returnString;
-        double n = 0.0;
-        double d = 0.0;
         double dValueOfFraction = 0.0;
 
         if (denominator.equals(BigInteger.ONE)) {

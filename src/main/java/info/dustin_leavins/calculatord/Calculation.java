@@ -1,9 +1,8 @@
-// Copyright (c) 2014 Dustin Leavins
+// Copyright (c) 2014, 2021 Dustin Leavins
 // See the file 'LICENSE' for copying permission.
 package info.dustin_leavins.calculatord;
 
 import java.util.LinkedList;
-import java.util.NoSuchElementException;
 
 /**
  * Represents a calculation that consists of <code>Operation</code>s and

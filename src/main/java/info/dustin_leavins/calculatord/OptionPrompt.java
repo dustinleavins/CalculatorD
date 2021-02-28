@@ -1,10 +1,9 @@
-// Copyright (c) 2014 Dustin Leavins
+// Copyright (c) 2014, 2021 Dustin Leavins
 // See the file 'LICENSE' for copying permission.
 
 package info.dustin_leavins.calculatord;
 
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JSlider;
@@ -17,13 +16,12 @@ import java.util.Hashtable;
 
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
  * Prompts the user to change GUI options. Inspiration provided by 
- * <a href="http://java.sun.com/docs/books/tutorial/uiswing/examples/components/ListDialogRunnerProject/src/components/ListDialog.java">
+ * <a href="https://docs.oracle.com/javase/tutorial/uiswing/examples/components/ListDialogRunnerProject/src/components/ListDialog.java">
  * ListDialog.java</a>.
  * @author Dustin Leavins
  */
@@ -41,7 +39,7 @@ public class OptionPrompt extends JDialog {
     private JRadioButton leftAlignmentButton;
     private JRadioButton rightAlignmentButton;
     private JRadioButton centerAlignmentButton;
-    private JComboBox displayModeBox;
+    private JComboBox<String> displayModeBox;
     private JButton saveAndQuitButton;
     private JButton quitButton;
 
@@ -84,15 +82,15 @@ public class OptionPrompt extends JDialog {
         displayFontSizeSlider.setMinimum(GUIOptions.MIN_FONT_SIZE);
         displayFontSizeSlider.setMaximum(GUIOptions.MAX_FONT_SIZE);
         displayFontSizeSlider.setValue(
-            this.guiOptions.displayFontSize());
+                OptionPrompt.guiOptions.displayFontSize());
         displayFontSizeSlider.setPaintLabels(true);
 
         // Label table for displayFontSizeSlider
         Hashtable<Integer, JLabel> tssLabelTable = 
             new Hashtable<Integer, JLabel>();
-        tssLabelTable.put(new Integer(GUIOptions.MIN_FONT_SIZE), 
+        tssLabelTable.put(GUIOptions.MIN_FONT_SIZE, 
             new JLabel("Small"));
-        tssLabelTable.put(new Integer(GUIOptions.MAX_FONT_SIZE), 
+        tssLabelTable.put(GUIOptions.MAX_FONT_SIZE, 
             new JLabel("Large"));
         displayFontSizeSlider.setLabelTable(tssLabelTable);
 
@@ -117,8 +115,7 @@ public class OptionPrompt extends JDialog {
         buttonFontSizeSlider = new JSlider();
         buttonFontSizeSlider.setMinimum(GUIOptions.MIN_FONT_SIZE);
         buttonFontSizeSlider.setMaximum(GUIOptions.MAX_FONT_SIZE);
-        buttonFontSizeSlider.setValue(
-            this.guiOptions.buttonFontSize());
+        buttonFontSizeSlider.setValue(OptionPrompt.guiOptions.buttonFontSize());
         buttonFontSizeSlider.setPaintLabels(true);
 
         // Label table for buttonFontSizeSlider
@@ -144,7 +141,7 @@ public class OptionPrompt extends JDialog {
         }
 
         String[] displayModeOptions = { "Decimal: 0.3", "Fraction: 3/10" };
-        displayModeBox = new JComboBox(displayModeOptions);
+        displayModeBox = new JComboBox<String>(displayModeOptions);
 
         switch (guiOptions.displayMode()) {
         case DECIMAL:
@@ -235,7 +232,6 @@ public class OptionPrompt extends JDialog {
                 else {
                     displayMode = DisplayMode.FRACTION;
                 }
-
 
                 OptionPrompt.guiOptions = new GUIOptions(
                     displayFontSizeSlider.getValue(),
